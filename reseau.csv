@@ -1,0 +1,99 @@
+name,prenom,Statut,affiliation,Poste,Cadre info
+BONAFOS,Bernard,Industriel,Airbus - Commerc.,Electrical Designer,
+PELVILLAIN,Cyril,Industriel,Airbus - Commerc.,Task leader RnT - High Power and Optical components,
+GIRARD,Yannick,Industriel,Airbus - Commerc.,MAD IRT - Head of Advanced Manufacturing Technologies,
+SATHLER ZAPPULLA,Gustavo,Industriel,Airbus - Commerc.,Power Conversion Engineer,
+FORGET,Frederic,Industriel,Airbus - CRT,Cable and Electrical Components Expert,
+PRISSE,Lucien,Industriel,Airbus - CRT,Responsable de projet,
+REVEL,Ivan,Industriel,Airbus - CRT,Electromagnetism senior scientist - Lightning expert,
+RIVENC,Jean,Industriel,Airbus - CRT,Ingenieur de recherche - Expert,
+CHEVALIER,Mathieu,Industriel,Airbus - DS,Study Project Manager - Space Exploration Future Programmes,
+FOURGEAUD,Laura,Industriel,Airbus - DS,Thermal and Fluids Design Responsible,
+LABOUILLE,Marie-Line,Industriel,Airbus - DS,Project Management Office lead,
+YBANEZ,Ludovic,Industriel,Airbus - UpNext,Head of ASCEND demonstrator,
+ABADIE,Cedric,Industriel,Alstom,TrTE Traction test engineer,
+BOUALEM,Benali,Industriel,Alstom,Ingénieur de recherche,
+SOUILLE,Ronan,Industriel,Alstom,Materials Expert,
+BORE,Pierre,Industriel,Astek,Consultant Ingenieur methodes bobinage - projet d'innovation,
+AUBERT,Eddy,Industriel,AURA A.,Ingenieur developpement des systemes electriques,
+BOUCHET,Laura,Industriel,AURA A.,Cheffe de projet,
+MIKUS,Pyerre-Yves,Industriel,Axon' C.,Ingénieur projets R&D - Matériaux Polymères,
+PONS,REMY,Industriel,Bollore d.,Directeur general,
+ODIC,Emmanuel,Academique,GEEPS,Professeur,
+VAZQUEZ,Thomas,Academique,GEEPS,Chercheur postdoctoral,
+LONJON,Antoine,Academique,CIRIMAT,Enseignant chercheur,
+DANTRAS,Eric,Academique,CIRIMAT,Professeur,
+ZIEGLER,Nicolas,Industriel,Erneo,CEO,
+KRAFFT,Benoit,Industriel,Exxelia,R&D Material Dpt Manager,
+RAIN,Pascal,Academique,G2ELAB,Professeur,
+CARNIELLI,Arnaud,Industriel,Gore,Key Account Manager Aerospace & Defense,
+LE,Trong Trung,Industriel,SII,Serial Test Engineer,
+QUIROGA CORTES,Luis,Industriel,Henkel,Lead Application Engineer,
+D'ELIA,Raffaele,Academique,ICA,Researcher,
+ROND,Cathy,Academique,ICA,Enseignante chercheuse,
+NOTINGHER,Petru,Academique,IES,Deputy Director,
+CASTELLON,Jerome,Academique,IES,Maitre de conferences,
+AGNEL,Serge,Academique,IES,Professeur,
+LAURENTIE,Jean-Charles,Academique,IES,Maitre de conferences,
+PRUVOST,Sebastien,Academique,IMP,Enseignant chercheur,
+KOZAKO,Masahiro,Academique,Kyutech,Professor,
+HIKITA,Masayuki,Academique,Kyutech,Professor,
+DINCULESCU,Sorin,Academique,LAPLACE,Ingenieur de Recherche,
+LAUDEBAT,Lionel,Academique,LAPLACE,Maitre de conferences,
+LE ROY,severine,Academique,LAPLACE,directrice de recherches CNRS,
+MALEC,David,Academique,LAPLACE,GEETS (ED#323) Doctoral School Deputy Director ,
+NAUDE,Nicolas,Academique,LAPLACE,Maitre de conferences,
+TEYSSEDRE,Gilbert,Academique,LAPLACE,Directeur de recherche,
+VALDEZ NAVA,Zarel,Academique,LAPLACE,Chercheur,
+DIAHAM,Sombel,Academique,LAPLACE,Enseignant chercheur,
+COUDERC,Mathieu,Industriel,Liebherr,Ingenieur bureau d'etudes,
+LACHASSAGNE,Laurent,Industriel,Liebherr,"Responsable de groupe Aerodynamique, Thermique et Acoustique",
+STEMMER,Sebastien,Industriel,Liebherr,Ingenieur d'essais ,
+TREILLARD,Alex,Industriel,Liebherr,Technicien Laboratoire Materiaux et electrification,
+DELPU,Guilhem,Industriel,Liebherr,R&D Program Manager,
+DUCHESNE,Stephane,Academique,LSEE,Professeur,
+VELU,Gabriel,Academique,LSEE,Professeur,
+REBOUL,Jean-Michel,Academique,Lusac,Maitre de Conferences,
+DARIO,Simon,Industriel,Mersen,Ingenieur R&D - Expert,
+FOUET,Thomas,Industriel,Mersen,R&D & Innovation Manager,
+MKAOUAR,Ahmed,Industriel,Mersen,Ingenieur thermique et electrique ,
+BEDEL,Vincent,Industriel,Michelin,Concepteur formulation de systemes epoxy,
+ARIS,Sid-Ahmed,Industriel,Nidec - Emotors,EMC Engineer,
+HAMITI,Tahar,Industriel,Nidec - Emotors,Principal electrical engineer,
+MARINO,Alban,Industriel,Nidec - LS,Responsable technique,
+MCCLELLAND,Mike,Industriel,Nidec - LS,Directeur innovation,
+PRIETO,Dany,Industriel,Nidec - LS,Responsable R&D,
+SARGET,Fabrice,Industriel,Nidec - LS,Senior Electrical and Instrumentation Engineer,
+SZCZEPANSKI,Mateusz,Industriel,Nidec - LS,Ingenieur de recherche,
+FOND,Emilie,Industriel,Radiall,Experte MW,
+HOUACHTIA,Afef,Industriel,Renault,Junior Expert for EV Battery Materials,
+SERGI,Riba,Industriel,Safran - Cabin,Ingenieur calcul machines electriques,
+BOURGEOIS,Lionel,Industriel,Safran - SEP,Directeur technologies plus vertes,Actuel n+1 depuis 5 ans dans son poste de directeur de l'axe de recherche Technologies Plus Vertes a l'IRT
+SUTRA-ORUS,Regine,Industriel,Safran - SEP,Directrice projet NeXT,"n+2 lors de son poste de directrice du domaine Aeronef + Electrique a l'IRT, puis collaboration dans le cadre de ses fonctions de directrice du pole E&E chez Safran"
+GENOULAZ,Jerome,Industriel,Safran - ISE,EWIS system architect,Jerome a travaille dans mon equipe lors de sa MAD dans le projet HIGHVOLT 1
+HENRARD,Pierre,Industriel,Safran - ISE,Chef de projet,Collegue dans le cadre de son poste de chef de projet a l'IRT en MAD
+PAGANELLI,Fabien,Industriel,Safran - ISE,Senior Research & Product Line Manager,Collaboration dans le cadre de son suivi des activites des projets HIGHVOLT 1
+THOMASSE,David,Industriel,Safran - ISE,Ingenieur concepton de composants cablage ,Collegue dans le cadre de sa MAD dans le projet Hybelec a l'IRT
+BOULAGHLA,Zakaria,Industriel,Safran - SPU,Ingenieur Projet Equipements Electriques ,Echanges pour sur des sujets de R&D dans le cadre de son precedent poste chez Safran
+ESTEBAN,Julien,Industriel,Safran - SPU,Materials & Processes Referent,Collaboration notamment sur la feuille de route materiaux isolants electriques IRT au cours de sa MAD dans le projet HYBELEC
+HERNY,Emilie,Industriel,Safran - SPU,Circular Economy Director,Collaboration notamment pour le Challenge dielectriques dans son precedent poste en MAD de directrice de l'axe Technologie de Fabrication Avancees a l'IRT
+ACHEEN,Robin,Industriel,Safran - Tech,Ingenieur de recherche,"Robin a realise sa these dans mon equipe lors du projet HIGHVOLT 1, j'ai ensuite encadre son post-doc d'un an avant sa prise de poste chez Safran"
+DOS SANTOS,Victor,Industriel,Safran - Tech,IRT Saint Exupery - Responsable de lot & Ingenieur de recherche,Collegues depuis sa these a l'IRT et sa MAD ensuite. Echanges techniques notamment sur les aspects de modelisation de la chaine electromecanique
+LEBEY,Thierry,Industriel,Safran - Tech,Directeur E&E,Directeur de ma these et collaboration depuis dans le cadre de son poste chez Safran Tech
+PNIAK,Lucas,Industriel,Safran - Tech,R&D Engineer,Echanges techniques notamment lors de conference et visite Safran Tech
+BENMAMAS,Loucif,Industriel,Safran - Tech,R&D Engineer,Collaboration lors de son precedent poste chez Nidec PSA Emotors dans le cadre du projet HIGHVOLT 2 et depuis dans son poste chez Safran Tech
+LOPEZ,Gerald,Industriel,Safran - Tech,"Ingenieur projet, recherche et developpement","Gerald est en MAD dans mon equipe dans le projet HIGHVOLT 2, de nombreux echanges techniques aussi sur la feuille de route materiaux isolants electriques, le challenge dielectrique, le montage du projet THERMIX"
+OUCHAR,Fatiha,Industriel,Safran - Tech,PHD Student,J'ai rencontre Fatiha d'abord dans le cadre de son stage avec Airbus
+PAUVERT,Vincent,Industriel,Safran - Tech,Ingenieur de recherche - Architecture des reseaux et systemes electriques - Safran Tech,Collegues dans le cadre de sa MAD a l'IRT dans sa societe precedente
+VAN DE STEEN,Cyril,Industriel,Safran - Tech,Ingenieur de recherche,Cyril a fait parti de mon equipe dans le cadre des projets HIGHVOLT 1 et 2 sur les activites de simulation.
+VIGUIER,Christophe,Industriel,Safran - Tech,Electrical Machines Team Leader,"Christophe a fait parti de l'equipe du porjet HIGHVOLT 2 dans le cadre de sa MAD, nous avons eu ensuite de nombreux echanges notamment sur le montage du projet BOBINO"
+TAGHIA,Bouazza,Industriel,Safran - SVS,Ingenieur de recherche,"Collegue lors de sa these a l'IRT, il fait maintenant parti de mon equipe dans le projet HIGHVOLT 2 dans le cadre de sa MAD"
+LONGERE,Xavier,Industriel,Safran - SVS,Concepteur Moteur Electrique,"Nous avons eu quelques echanges techniques, notamment dans le cadre du projet Thermix"
+ORLANDINI,Fabien,Industriel,Safran - SVS,"Responsable du service Architecture, Recherche et Technologie / Safran Ventilation Systems",Collaboration dans le cadre de son suivi des activites des projets HIGHVOLT 1 & 2
+BENARD,Freddy,Industriel,SEG,Lab Manager,
+CHANAUD,Gaetan,Industriel,Soterem,Ingenieur d'essais,
+ANAND,Somya,Industriel,Souriau,Senior Electrical Engineer,
+BOCAHUT,Anthony,Industriel,Syensqo,Polymer Physics Principal Scientist,
+MIYAKE,Hiroaki,Academique,TCU,Professor,
+DEBBOU,Mustapha,Industriel,Thales,Product design leader ,
+ALBERT,Laurent,Industriel,Vitesco,Architecte machine,
