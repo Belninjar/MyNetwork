@@ -1,499 +1,516 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Mon réseau professionel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-      body {
-        margin: 0;
-        font-family: 'Roboto', Arial, sans-serif; /* Ajout de Roboto comme police alternative */
-        display: flex;
-        height: 100vh;
-      }
+<head>
+  <meta charset="UTF-8">
+  <title>Mon réseau professionnel</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
 
-      #leftPanel {
-        width: calc(
-          (100vw - 1.2 * 100vh) / 2
-        ); /* Left and right panels take remaining space */
-        padding: 20px;
-        box-sizing: border-box;
-        border: 1px solid black;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: justify;
-        
-      }
+    /* Left Panel */
+    #leftPanel {
+      width: calc((100vw - 1.2 * 100vh) / 2);
+      padding: 20px;
+      box-sizing: border-box;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: justify;
+    }
 
-      #rightPanel {
-        width: calc(
-          (100vw - 1.2 * 100vh) / 2
-        ); /* Left and right panels take remaining space */
-        padding: 20px;
-        box-sizing: border-box;
-        border: 1px solid black;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: left; /* Align everything to the left */
-      }
-      #rightPanel h2 {
-        text-decoration: underline; /* Underline the legend title */
-      }
-      #rightPanel p {
-        font-size: 1.2em; /* Adjust the size of the text */
-      }
-      .colored-dot {
-        font-size: 4em; /* Increase the size of the colored dots */
-      }
+    /* Right Panel */
+    #rightPanel {
+      width: calc((100vw - 1.2 * 100vh) / 2);
+      padding: 20px;
+      box-sizing: border-box;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+    #rightPanel h2 {
+      text-decoration: underline;
+    }
+    #rightPanel p {
+      font-size: 1.2em;
+    }
 
-      #bodyPanel {
-        width: calc(1.2 * 100vh); /* Body width is 1.2 times the height */
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid black;
-        position: relative;
-        background: linear-gradient(
-          to top,
-          #c4c4c4,
-          #ebebeb
-        ); /* Gradient from left to right */
-      }
+    /* Body Panel */
+    #bodyPanel {
+      width: calc(1.2 * 100vh);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid black;
+      position: relative;
+      background: linear-gradient(to top, #c4c4c4, #ebebeb);
+    }
 
-      #graph {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
+    /* Graph Styles */
+    #graph {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
 
-      .node circle {
-        stroke: #fff;
-        stroke-width: 1.5px;
-      }
+    .node circle {
+      stroke: #fff;
+      stroke-width: 1.5px;
+    }
 
-      .node text {
-        font: 10px sans-serif;
-        fill: #000;
-        text-shadow: 2px 2px 2px #fff, -2px -2px 2px #fff, 2px -2px 2px #fff,
-          -2px 2px 2px #fff;
-      }
+    .node text {
+      font: 10px sans-serif;
+      fill: #000;
+      text-shadow: 2px 2px 2px #fff, -2px -2px 2px #fff, 2px -2px 2px #fff,
+        -2px 2px 2px #fff;
+    }
 
-      .link {
-        fill: none;
-        stroke: #555;
-        stroke-opacity: 0.4;
-        stroke-width: 1.5px;
-      }
+    .link {
+      fill: none;
+      stroke: #555;
+      stroke-opacity: 0.4;
+      stroke-width: 1.5px;
+    }
 
-      .highlighted circle {
-        stroke: rgba(0, 0, 0, 0.779);
-        stroke-width: 1px;
-      }
+    .highlighted circle {
+      stroke: rgba(0, 0, 0, 0.779);
+      stroke-width: 1px;
+    }
 
-      .tooltip {
-        position: absolute;
-        text-align: left;
-        width: auto;
-        padding: 8px;
-        font: 12px sans-serif;
-        background: rgba(255, 255, 255, 0.9);
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        pointer-events: none;
-        color: #333;
-      }
-      text {
-  font-smoothing: antialiased;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-svg {
-  shape-rendering: auto;
-}
+    /* Tooltip */
+    .tooltip {
+      position: absolute;
+      text-align: left;
+      width: auto;
+      padding: 8px;
+      font: 12px sans-serif;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      pointer-events: none;
+      color: #333;
+    }
 
+    /* Text Smoothing */
+    text {
+      font-smoothing: antialiased;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    svg {
+      shape-rendering: auto;
+    }
 
+    /* Info Frame */
+    #cadreInfo {
+      margin-top: 20px;
+      width: 80%;
+      height: 150px;
+      border: 1px solid black;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 10px;
+    }
 
-      #cadreInfo {
-        margin-top: 20px;
-        width: 80%;
-        height: 150px;
-        border: 1px solid black;
-        display: flex;
-        justify-content: flex-start; /* Align horizontally to the left */
-    align-items: flex-start;     /* Align vertically near the top */
-    padding: 10px;               /* Add small padding for some space from the top */
-      }
+    /* Headings */
+    h2 {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="leftPanel">
+    <h2>Mon réseau externe</h2>
+    <p>
+      Ce graphique propose une vue synthétique des personnes proches dans mon
+      réseau externe (hors IRT). Le poste des personnes
+      est visible en pointant avec la souris ou en touchant l'écran. Pour les personnels Safran,
+      une information particulière est ajoutée dans le cadre ci-dessous.
+    </p>
+    <div id="cadreInfo"></div>
+  </div>
 
-      h2 {
-        margin: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="leftPanel">
-      <h2>Mon réseau externe</h2>
-      <p>
-        Ce graphique propose une vue synthétique des personnes proches dans mon
-        réseau externe (hors IRT). Le poste des personnes
-        est visible en pointant avec la souris. Pour les personnels Safran,
-        une information particulière est ajoutée dans le cadre ci-dessous.
-      </p>
-      <div id="cadreInfo"></div>
-    </div>
+  <div id="bodyPanel">
+    <div id="graph"></div>
+  </div>
 
-    <div id="bodyPanel">
-      <div id="graph"></div>
-    </div>
+  <div id="rightPanel">
+    <h2>Légendes</h2>
+    <p><span style="color: #0f16af">●</span><strong> Académiques</strong></p>
+    <p><span style="color: #999ef8">●</span><strong> Laboratoires</strong></p>
+    <p><span style="color: #8b0000">●</span><strong> Industriels</strong></p>
+    <p><span style="color: #b22222">●</span><strong> Entreprises</strong></p>
+    <p><span style="color: #ff6347">●</span><strong> Filiales</strong></p>
+    <p><span style="color: #008000">●</span><strong> Personnes</strong></p>
+  </div>
 
-    <div id="rightPanel">
-      <h2>Légendes</h2>
-      <p><span style="color: #0f16af">●</span><strong> Académiques</strong></p>
-      <p><span style="color: #999ef8">●</span><strong> Laboratoires</strong></p>
-      <p><span style="color: #8b0000">●</span> <strong> Industriels</strong></p>
-      <p><span style="color: #b22222">●</span><strong> Entreprises</strong></p>
-      <p><span style="color: #ff6347">●</span><strong> Filiales</strong></p>
-      <p><span style="color: #008000">●</span><strong> Personnes</strong></p>
-    </div>
+  <!-- D3.js Library -->
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script>
+    // JavaScript code adjusted for responsiveness and text positioning
 
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-    <script>
-      const width = window.innerHeight * 1.2; // Width is 1.2 times the height
-      const height = window.innerHeight;
-      const radius = Math.min(width, height) / 2 - 100;
-      const n = 96;
-      const angleOffset = (20 * Math.PI) / n;
-      let i = 0;
+    const width = window.innerHeight * 1.2; // Width is 1.2 times the height
+    const height = window.innerHeight;
+    const radius = Math.min(width, height) / 2 - 100;
+    const n = 96;
+    const angleOffset = (20 * Math.PI) / n;
+    let i = 0;
 
-      // Create an SVG canvas for radial layout
-      const svg = d3
-        .select("#graph")
-        .append("svg")
-        .attr("viewBox", `0 0 ${width} ${height}`)
-.attr("preserveAspectRatio", "xMidYMid meet")
+    // Create an SVG canvas for radial layout
+    const svg = d3
+      .select("#graph")
+      .append("svg")
+      .attr("viewBox", `0 0 ${width} ${height}`)
+      .attr("preserveAspectRatio", "xMidYMid meet")
+      .append("g")
+      .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
-        .append("g")
-        .attr("transform", `translate(${width / 2}, ${height / 2})`);
+    const clusterLayout = d3
+      .cluster()
+      .size([2 * Math.PI, radius])
+      .separation((a, b) => (a.parent === b.parent ? 1 : 2) / a.depth);
 
-      const clusterLayout = d3
-        .cluster()
-        .size([2 * Math.PI, radius])
-        .separation((a, b) => (a.parent === b.parent ? 1 : 2) / a.depth);
+    const tooltip = d3
+      .select("body")
+      .append("div")
+      .attr("class", "tooltip")
+      .style("opacity", 0);
 
-      const tooltip = d3
-        .select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0);
+    const cadreInfo = d3.select("#cadreInfo");
 
-      const cadreInfo = d3.select("#cadreInfo");
+    d3.csv("reseau.csv", d3.autoType).then((data) => {
+      const rootData = {
+        name: "",
+        children: [
+          { name: "LABOS", children: [] },
+          { name: "INDUS", children: [] },
+        ],
+      };
 
-      d3.csv("reseau.csv", d3.autoType).then((data) => {
-        const rootData = {
-          name: "",
-          children: [
-            { name: "LABOS", children: [] },
-            { name: "INDUS", children: [] },
-          ],
+      // Build hierarchy
+      data.forEach((d) => {
+        const affiliationName = d.affiliation.includes(" - ")
+          ? d.affiliation.split(" - ")[0]
+          : d.affiliation;
+        const personNode = {
+          name: `${d.prenom} ${d.name}`,
+          Poste: d.Poste,
+          info: d["Cadre info"],
         };
 
-        // Build hierarchy
-        data.forEach((d) => {
-          const affiliationName = d.affiliation.includes(" - ")
-            ? d.affiliation.split(" - ")[0]
-            : d.affiliation;
-          const personNode = {
-            name: `${d.prenom} ${d.name}`,
-            Poste: d.Poste,
-            info: d["Cadre info"],
+        let rootChild =
+          d.Statut === "Academique"
+            ? rootData.children[0]
+            : rootData.children[1];
+
+        let institution = rootChild.children.find(
+          (child) => child.name === affiliationName
+        );
+        if (!institution) {
+          institution = {
+            name: affiliationName,
+            children: [],
           };
+          rootChild.children.push(institution);
+        }
 
-          let rootChild =
-            d.Statut === "Academique"
-              ? rootData.children[0]
-              : rootData.children[1];
-
-          let institution = rootChild.children.find(
-            (child) => child.name === affiliationName
+        if (d.Statut === "Industriel" && d.affiliation.includes(" - ")) {
+          const subCompanyName = d.affiliation.split(" - ")[1];
+          let subCompany = institution.children.find(
+            (child) => child.name === subCompanyName
           );
-          if (!institution) {
-            institution = {
-              name: affiliationName,
+          if (!subCompany) {
+            subCompany = {
+              name: subCompanyName,
               children: [],
             };
-            rootChild.children.push(institution);
+            institution.children.push(subCompany);
           }
+          subCompany.children.push(personNode);
+        } else {
+          institution.children.push(personNode);
+        }
+      });
 
-          if (d.Statut === "Industriel" && d.affiliation.includes(" - ")) {
-            const subCompanyName = d.affiliation.split(" - ")[1];
-            let subCompany = institution.children.find(
-              (child) => child.name === subCompanyName
-            );
-            if (!subCompany) {
-              subCompany = {
-                name: subCompanyName,
-                children: [],
-              };
-              institution.children.push(subCompany);
-            }
-            subCompany.children.push(personNode);
-          } else {
-            institution.children.push(personNode);
-          }
+      const root = d3.hierarchy(rootData);
+      root.x0 = height / 2;
+      root.y0 = 0;
+
+      update(root);
+
+      function update(source) {
+        const updatedRoot = clusterLayout(root);
+        const nodes = updatedRoot.descendants();
+        const links = nodes.slice(1);
+        const transitionDuration = 750;
+
+        nodes.forEach((d) => {
+          d.x0 = d.x0 || d.x;
+          d.y0 = d.y0 || d.y;
         });
 
-        const root = d3.hierarchy(rootData);
-        root.x0 = height / 2;
-        root.y0 = 0;
+        // Update Nodes
+        const node = svg
+          .selectAll("g.node")
+          .data(nodes, (d) => d.id || (d.id = ++i));
 
-        update(root);
+        const nodeEnter = node
+          .enter()
+          .append("g")
+          .attr(
+            "class",
+            (d) => `node${d.children ? " node--internal" : " node--leaf"}`
+          )
+          .attr(
+            "transform",
+            (d) => `translate(${project(source.x0, source.y0)})`
+          )
+          .on("click", click)
+          .on("mouseover", mouseover)
+          .on("mouseout", mouseout)
+          .on("touchstart", touchstart)
+          .on("touchend", touchend);
 
-        function update(source) {
-          const updatedRoot = clusterLayout(root);
-          const nodes = updatedRoot.descendants();
-          const links = nodes.slice(1);
-          const transitionDuration = 750;
+        nodeEnter.append("circle").attr("r", 1e-6).style("fill", nodeColor);
 
-          nodes.forEach((d) => {
-            d.x0 = d.x0 || d.x;
-            d.y0 = d.y0 || d.y;
+        nodeEnter
+          .append("image")
+          .attr("xlink:href", (d) =>
+            d.data.name === "" ? "Guillaume.png" : null
+          )
+          .attr("x", (d) => (d.data.name === "" ? -20 : -10))
+          .attr("y", (d) => (d.data.name === "" ? -20 : -10))
+          .attr("width", (d) => (d.data.name === "" ? 40 : 20))
+          .attr("height", (d) => (d.data.name === "" ? 40 : 20));
+
+        nodeEnter
+          .append("text")
+          .attr("dy", ".31em")
+          .attr("x", (d) => {
+            const adjustedAngle = d.x + angleOffset;
+            return adjustedAngle < Math.PI ? 10 : -10; // Adjusted to bring text closer
+          })
+          .attr("text-anchor", (d) => {
+            const adjustedAngle = d.x + angleOffset;
+            return adjustedAngle < Math.PI ? "start" : "end";
+          })
+          .attr("transform", (d) => {
+            const adjustedAngle = d.x + angleOffset;
+            const rotation = (adjustedAngle * 180) / Math.PI - 90;
+            const flip = adjustedAngle < Math.PI ? 0 : 180;
+            return `rotate(${rotation}) translate(${
+              adjustedAngle < Math.PI ? 10 : -10
+            }) rotate(${flip})`;
+          })
+          .text((d) => d.data.name)
+          .style("font-family", "Arial, sans-serif")
+          .style("font-size", "11px")
+          .style("font-weight", "bold")
+          .style("stroke", "none")
+          .style("fill", "#040463");
+
+        const nodeUpdate = nodeEnter.merge(node);
+        nodeUpdate
+          .transition()
+          .duration(transitionDuration)
+          .attr("transform", (d) => `translate(${project(d.x, d.y)})`);
+
+        nodeUpdate
+          .select("circle")
+          .attr("r", (d) => (d.data.name === "" ? 12 : 4))
+          .style("fill", nodeColor);
+
+        // Adjust text positioning in nodeUpdate
+        nodeUpdate
+          .select("text")
+          .attr("x", (d) => {
+            const adjustedAngle = (d.x + angleOffset) % (2 * Math.PI);
+            return adjustedAngle < Math.PI ? -5 : -15; // Adjusted to bring text closer
+          })
+          .attr("text-anchor", (d) => {
+            const adjustedAngle = (d.x + angleOffset) % (2 * Math.PI);
+            return adjustedAngle < Math.PI ? "start" : "end";
+          })
+          .attr("transform", (d) => {
+            const adjustedAngle = (d.x + angleOffset) % (2 * Math.PI);
+            const rotation = (adjustedAngle * 180) / Math.PI - 90;
+            const flip = adjustedAngle < Math.PI ? 0 : 180;
+            return `rotate(${rotation}) translate(${
+              adjustedAngle < Math.PI ? 10 : -10
+            }) rotate(${flip})`;
           });
 
-          // Update Nodes
-          const node = svg
-            .selectAll("g.node")
-            .data(nodes, (d) => d.id || (d.id = ++i));
+        const nodeExit = node
+          .exit()
+          .transition()
+          .duration(transitionDuration)
+          .attr(
+            "transform",
+            (d) => `translate(${project(source.x, source.y)})`
+          )
+          .remove();
 
-          const nodeEnter = node
-            .enter()
-            .append("g")
-            .attr(
-              "class",
-              (d) => `node${d.children ? " node--internal" : " node--leaf"}`
-            )
-            .attr(
-              "transform",
-              (d) => `translate(${project(source.x0, source.y0)})`
-            )
-            .on("click", click)
-            .on("mouseover", (event, d) => {
-    // Check if the node represents a person (a leaf node without children)
-    if (!d.children) {
-        tooltip.transition().duration(200).style("opacity", 0.9);
-        tooltip
+        nodeExit.select("circle").attr("r", 1e-6);
+
+        // Update Links
+        const link = svg.selectAll("path.link").data(links, (d) => d.id);
+
+        const linkEnter = link
+          .enter()
+          .insert("path", "g")
+          .attr("class", "link")
+          .attr("d", (d) => {
+            const o = { x: source.x0, y: source.y0 };
+            return diagonal(o, o);
+          });
+
+        const linkUpdate = linkEnter.merge(link);
+
+        linkUpdate
+          .transition()
+          .duration(transitionDuration)
+          .attr("d", (d) => diagonal(d, d.parent));
+
+        link
+          .exit()
+          .transition()
+          .duration(transitionDuration)
+          .attr("d", (d) => {
+            const o = { x: source.x, y: source.y };
+            return diagonal(o, o);
+          })
+          .remove();
+
+        nodes.forEach((d) => {
+          d.x0 = d.x;
+          d.y0 = d.y;
+        });
+      }
+
+      function click(event, d) {
+        if (d.children) {
+          d._children = d.children;
+          d.children = null;
+        } else {
+          d.children = d._children;
+          d._children = null;
+        }
+        update(d);
+      }
+
+      function diagonal(s, d) {
+        const path = `
+          M ${project(s.x, s.y)}
+          C ${project(s.x, (s.y + d.y) / 2)}
+            ${project(d.x, (s.y + d.y) / 2)}
+            ${project(d.x, d.y)}
+        `;
+        return path;
+      }
+
+      function project(x, y) {
+        const angle = x + angleOffset - Math.PI / 2;
+        const radius = y;
+        return [radius * Math.cos(angle), radius * Math.sin(angle)];
+      }
+
+      function nodeColor(d) {
+        if (d.data.name === "") return "#000000"; // Me = black
+        if (d.data.name === "INDUS") return "#8B0000"; // INDUS = dark red
+        if (d.depth === 2 && d.parent && d.parent.data.name === "INDUS")
+          return "#B22222"; // Company = firebrick
+        if (
+          d.depth === 3 &&
+          d.parent &&
+          d.parent.parent &&
+          d.parent.parent.data.name === "INDUS" &&
+          d.children
+        )
+          return "#FF6347"; // Subcompany = tomato
+        if (d.data.name === "LABOS") return "#0f16af"; // LABOS = blue
+        if (d.depth >= 2 && d.parent && d.parent.data.name === "LABOS")
+          return "#999ef8"; // LABOS institutions
+        return "#008000"; // People = green
+      }
+
+      function isCompanyNode(d) {
+        return d.depth === 2 && d.parent && d.parent.data.name === "INDUS";
+      }
+
+      function highlightSubbranches(d) {
+        const descendants = d.descendants();
+        svg
+          .selectAll(".node")
+          .filter((nodeD) => descendants.indexOf(nodeD) !== -1)
+          .classed("highlighted", true);
+      }
+
+      function unhighlightSubbranches(d) {
+        const descendants = d.descendants();
+        svg
+          .selectAll(".node")
+          .filter((nodeD) => descendants.indexOf(nodeD) !== -1)
+          .classed("highlighted", false);
+      }
+
+      function mouseover(event, d) {
+        // Check if the node represents a person (a leaf node without children)
+        if (!d.children) {
+          tooltip.transition().duration(200).style("opacity", 0.9);
+          tooltip
             .html(`Poste: ${d.data.Poste}`)
             .style("left", event.pageX + 5 + "px")
             .style("top", event.pageY - 28 + "px");
 
-        // Only display cadreInfo if "Cadre info" column is not empty
-        if (d.data.info) {
+          // Only display cadreInfo if "Cadre info" column is not empty
+          if (d.data.info) {
             cadreInfo.text(d.data.info);
-        } else {
-            cadreInfo.text(""); // Reset text or hide if empty
-        }
-    }
-
-    // Highlight subbranches if the node represents a company
-    if (isCompanyNode(d)) {
-        highlightSubbranches(d);
-    }
-})
-.on("mouseout", (event, d) => {
-    // Hide the tooltip when the mouse leaves the node, but only for person nodes
-    if (!d.children) {
-        tooltip.transition().duration(500).style("opacity", 0);
-    }
-
-    // Reset cadreInfo text when mouse leaves the node
-    cadreInfo.text("");
-
-    // Unhighlight subbranches if the node represents a company
-    if (isCompanyNode(d)) {
-        unhighlightSubbranches(d);
-    }
-});
-
-          nodeEnter.append("circle").attr("r", 1e-6).style("fill", nodeColor);
-          nodeEnter
-            .append("image")
-            .attr("xlink:href", (d) =>
-              d.data.name === "" ? "Guillaume.png" : null
-            )
-            .attr("x", (d) => (d.data.name === "" ? -20 : -10))
-            .attr("y", (d) => (d.data.name === "" ? -20 : -10))
-            .attr("width", (d) => (d.data.name === "" ? 40 : 20))
-            .attr("height", (d) => (d.data.name === "" ? 40 : 20));
-
-          nodeEnter
-            .append("text")
-            .attr("dy", ".31em")
-            .attr("x", (d) => {
-              const adjustedAngle = d.x + angleOffset;
-              return adjustedAngle < Math.PI ? 10 : -10; // Adjusted to bring text closer
-            })
-            .attr("text-anchor", (d) => {
-              const adjustedAngle = d.x + angleOffset;
-              return adjustedAngle < Math.PI ? "start" : "end";
-            })
-            .attr("transform", (d) => {
-              const adjustedAngle = d.x + angleOffset;
-              const rotation = (adjustedAngle * 180) / Math.PI - 90;
-              const flip = adjustedAngle < Math.PI ? 0 : 180;
-              return `rotate(${rotation}) translate(${
-                adjustedAngle < Math.PI ? 10 : -10 // Adjusted to bring text closer
-              }) rotate(${flip})`;
-            })
-            .text((d) => d.data.name)
-            .style("font-family", "Arial, sans-serif")
-            .style("font-size", "11px")
-            .style("font-weight", "bold")
-            .style("stroke", "none")
-            .style("fill", "#040463");
-
-          const nodeUpdate = nodeEnter.merge(node);
-          nodeUpdate
-            .transition()
-            .duration(transitionDuration)
-            .attr("transform", (d) => `translate(${project(d.x, d.y)})`);
-
-          nodeUpdate
-            .select("circle")
-            .attr("r", (d) => (d.data.name === "" ? 12 : 4))
-            .style("fill", nodeColor);
-          // Adjust text positioning in nodeUpdate
-          nodeUpdate
-            .select("text")
-            .attr("x", (d) => {
-              const adjustedAngle = (d.x + angleOffset) % (2 * Math.PI);
-              return adjustedAngle < Math.PI ? -5 : -15; // Adjusted to bring text closer
-            })
-            .attr("text-anchor", (d) => {
-              const adjustedAngle = (d.x + angleOffset) % (2 * Math.PI);
-              return adjustedAngle < Math.PI ? "start" : "end";
-            })
-            .attr("transform", (d) => {
-              const adjustedAngle = (d.x + angleOffset) % (2 * Math.PI);
-              const rotation = (adjustedAngle * 180) / Math.PI - 90;
-              const flip = adjustedAngle < Math.PI ? 0 : 180;
-              return `rotate(${rotation}) translate(${
-                adjustedAngle < Math.PI ? 10 : -10 // Adjusted to bring text closer
-              }) rotate(${flip})`;
-            });
-          const nodeExit = node
-            .exit()
-            .transition()
-            .duration(transitionDuration)
-            .attr(
-              "transform",
-              (d) => `translate(${project(source.x, source.y)})`
-            )
-            .remove();
-
-          nodeExit.select("circle").attr("r", 1e-6);
-
-          // Update Links
-          const link = svg.selectAll("path.link").data(links, (d) => d.id);
-
-          const linkEnter = link
-            .enter()
-            .insert("path", "g")
-            .attr("class", "link")
-            .attr("d", (d) => {
-              const o = { x: source.x0, y: source.y0 };
-              return diagonal(o, o);
-            });
-
-          const linkUpdate = linkEnter.merge(link);
-
-          linkUpdate
-            .transition()
-            .duration(transitionDuration)
-            .attr("d", (d) => diagonal(d, d.parent));
-
-          link
-            .exit()
-            .transition()
-            .duration(transitionDuration)
-            .attr("d", (d) => {
-              const o = { x: source.x, y: source.y };
-              return diagonal(o, o);
-            })
-            .remove();
-
-          nodes.forEach((d) => {
-            d.x0 = d.x;
-            d.y0 = d.y;
-          });
-        }
-
-        function click(event, d) {
-          if (d.children) {
-            d._children = d.children;
-            d.children = null;
           } else {
-            d.children = d._children;
-            d._children = null;
+            cadreInfo.text(""); // Reset text or hide if empty
           }
-          update(d);
-        }
-        // Add the missing diagonal function
-        function diagonal(s, d) {
-          const path = `
-            M ${project(s.x, s.y)}
-            C ${project(s.x, (s.y + d.y) / 2)}
-              ${project(d.x, (s.y + d.y) / 2)}
-              ${project(d.x, d.y)}
-          `;
-          return path;
         }
 
-        function project(x, y) {
-          const angle = x + angleOffset - Math.PI / 2;
-          const radius = y;
-          return [radius * Math.cos(angle), radius * Math.sin(angle)];
+        // Highlight subbranches if the node represents a company
+        if (isCompanyNode(d)) {
+          highlightSubbranches(d);
+        }
+      }
+
+      function mouseout(event, d) {
+        // Hide the tooltip when the mouse leaves the node, but only for person nodes
+        if (!d.children) {
+          tooltip.transition().duration(500).style("opacity", 0);
         }
 
-        function nodeColor(d) {
-          if (d.data.name === "") return "#000000"; // Me = black
-          if (d.data.name === "INDUS") return "#8B0000"; // INDUS = red
-          if (d.depth === 2 && d.parent && d.parent.data.name === "INDUS")
-            return "#B22222"; // Company = orange
-          if (
-            d.depth === 3 &&
-            d.parent &&
-            d.parent.parent &&
-            d.parent.parent.data.name === "INDUS" &&
-            d.children
-          )
-            return "#FF6347"; // Subcompany = light orange
-          if (d.data.name === "LABOS") return "#0f16af"; // LABOS = blue
-          if (d.depth >= 2 && d.parent && d.parent.data.name === "LABOS")
-            return "#999ef8"; // LABOS institutions
-          return "#008000"; // People = green
-        }
+        // Reset cadreInfo text when mouse leaves the node
+        cadreInfo.text("");
 
-        function isCompanyNode(d) {
-          return d.depth === 2 && d.parent && d.parent.data.name === "INDUS";
+        // Unhighlight subbranches if the node represents a company
+        if (isCompanyNode(d)) {
+          unhighlightSubbranches(d);
         }
+      }
 
-        function highlightSubbranches(d) {
-          const descendants = d.descendants();
-          svg
-            .selectAll(".node")
-            .filter((nodeD) => descendants.indexOf(nodeD) !== -1)
-            .classed("highlighted", true);
-        }
+      function touchstart(event, d) {
+        event.preventDefault();
+        mouseover(event, d);
+      }
 
-        function unhighlightSubbranches(d) {
-          const descendants = d.descendants();
-          svg
-            .selectAll(".node")
-            .filter((nodeD) => descendants.indexOf(nodeD) !== -1)
-            .classed("highlighted", false);
-        }
-      });
-    </script>
-  </body>
+      function touchend(event, d) {
+        event.preventDefault();
+        mouseout(event, d);
+      }
+    });
+  </script>
+</body>
 </html>
